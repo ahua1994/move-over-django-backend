@@ -67,15 +67,18 @@ class PlaceCreateView(CreateAPIView):
     permission_classes = [IsAuthenticated]
 
 
-# class ItemListFilteredView(ListAPIView):
-#     # change to list only items matching move id
+class ItemListFilteredView(ListAPIView):
+    # change to list only items matching move id
 
-#     serializer_class = ItemSerializer
-#     permission_classes = [IsAuthenticated]
+    serializer_class = ItemSerializer
+    permission_classes = [IsAuthenticated]
 
-#     def get_queryset(self):
-#         qs = Item.objects.filter(owner_id=self.request.user.id)
-#         return qs
+    def get_queryset(self):
+        print(f"self, {self}")
+        print(Item.objects.all())
+        qs = Item.objects.filter(move_id=self.request.user.id)
+        print(f"qs, {qs}")
+        return qs
 
 
 # class PlaceListFilteredView(ListAPIView):

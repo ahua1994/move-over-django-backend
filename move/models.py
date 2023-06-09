@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -28,7 +29,8 @@ class Place(models.Model):
 
 class Item(models.Model):
     move_id = models.ForeignKey(Move, on_delete=models.CASCADE)
-    quantity = models.PositiveSmallIntegerField(default=1)
+    quantity = models.PositiveSmallIntegerField(
+        default=1, validators=[MinValueValidator(1), MaxValueValidator(100)])
     brand = models.CharField(max_length=20, blank=True)
     name = models.CharField(max_length=30)
     place = models.ForeignKey(Place, on_delete=models.CASCADE)

@@ -12,6 +12,15 @@ class Move(models.Model):
     desc = models.TextField(max_length=300)
     notes = models.TextField(max_length=300, blank=True)
     move_date = models.DateTimeField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def places(self):
+        return self.place_set.all()
+
+    @property
+    def items(self):
+        return self.item_set.all()
 
     def __str__(self):
         return f"{self.desc} by {self.owner}"

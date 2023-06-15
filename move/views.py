@@ -52,7 +52,8 @@ class MoveDetailView(ListAPIView):
     serializer_class = MoveSerializer
 
     def get_queryset(self):
-        return Move.objects.filter(id=self.kwargs["id"])
+        print("hehuaeh", self.kwargs)
+        return Move.objects.filter(id=self.kwargs["pk"])
 
 
 class ItemCreateView(CreateAPIView):
@@ -73,12 +74,14 @@ class ItemListFilteredView(ListAPIView):
     serializer_class = ItemSerializer
     permission_classes = [IsAuthenticated]
 
-    def get_queryset(self):
-        print(f"self, {self}")
-        print(Item.objects.all())
-        qs = Item.objects.filter(move_id=self.request.user.id)
-        print(f"qs, {qs}")
-        return qs
+    queryset = Item.objects.all()
+
+    # def get_queryset(self):
+    #     print(f"self, {self}")
+    #     print(Item.objects.all())
+    #     qs = Item.objects.filter(move_id=self.request.user.id)
+    #     print(f"qs, {qs}")
+    #     return qs
 
 
 # class PlaceListFilteredView(ListAPIView):

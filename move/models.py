@@ -19,8 +19,16 @@ class Move(models.Model):
         return self.place_set.all()
 
     @property
+    def places_count(self):
+        return self.place_set.all().count()
+
+    @property
     def items(self):
         return self.item_set.all()
+
+    @property
+    def items_count(self):
+        return self.item_set.all().count()
 
     def __str__(self):
         return f"{self.desc} by {self.owner}"
@@ -31,6 +39,10 @@ class Place(models.Model):
     name = models.CharField(max_length=30)
     address = models.CharField(max_length=50, blank=True)
     notes = models.TextField(max_length=200, blank=True)
+
+    @property
+    def items(self):
+        return self.item_set.all()
 
     def __str__(self):
         return f"{self.name} {self.address}"

@@ -9,6 +9,7 @@ class Move(models.Model):
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, blank=True, null=True, editable=False)
     status = models.BooleanField(default=False)
+    purpose = models.TextField(max_length=20)
     desc = models.TextField(max_length=300)
     notes = models.TextField(max_length=300, blank=True)
     move_date = models.DateTimeField()
@@ -39,6 +40,7 @@ class Place(models.Model):
     name = models.CharField(max_length=30)
     address = models.CharField(max_length=50, blank=True)
     notes = models.TextField(max_length=200, blank=True)
+    origin = models.BooleanField()
 
     @property
     def items(self):

@@ -3,7 +3,7 @@ from .views import *
 
 urlpatterns = [
     path("move/", MoveCreateView.as_view()),
-    path("rud/<int:id>/", MoveRUDView.as_view()),
+    path("move/<int:id>/", MoveRUDView.as_view()),
     path("mymoves/", MoveListFilteredView.as_view()),
     path("<int:pk>/", MoveDetailView.as_view()),
     path("item/", ItemCreateView.as_view()),

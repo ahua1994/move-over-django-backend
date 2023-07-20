@@ -35,13 +35,13 @@ class MoveRUDView(RetrieveUpdateDestroyAPIView):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         if request.user != self.object.owner:
-            raise PermissionDenied("Not the owner of this move")
+            raise PermissionDenied("Unauthorized User")
         return super().get(request, *args, **kwargs)
 
     def patch(self, request, *args, **kwargs):
         self.object = self.get_object()
         if request.user != self.object.owner:
-            raise PermissionDenied("Not the owner of this move")
+            raise PermissionDenied("Unauthorized User")
         return super().patch(request, *args, **kwargs)
 
     def get_queryset(self):

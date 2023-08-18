@@ -5,6 +5,9 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 
 
+# You need to overwrite the create() and update() views in your Employee Serializer. Please refer this link for complete doc.
+
+
 class Move(models.Model):
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, blank=True, null=True, editable=False)

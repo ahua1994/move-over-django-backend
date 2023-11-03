@@ -71,7 +71,6 @@ class PlaceCreateView(CreateAPIView):
 class ItemListFilteredView(ListAPIView):
     # change to list only items matching move id
     # just delete and create the item when they move
-    
     serializer_class = ItemSerializer
     permission_classes = [IsAuthenticated]
 
